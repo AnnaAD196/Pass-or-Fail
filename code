@@ -18,4 +18,4 @@ anxiety = int(input("Enter anxiety level (1 = High, 0 = Low): "))
 prob = model.predict_proba([[hours, attendance, anxiety]])[0][1]
 prediction = model.predict([[hours, attendance, anxiety]])[0]
 print(f"\nProbability of Passing: {prob:.4f}")
-print("Prediction:", "Pass ✅" if prediction == 1 else "Fail ❌")
+print("Prediction:", "Pass ✅🗿📈" if prediction == 1 else "Fail ❌🥀📉")
