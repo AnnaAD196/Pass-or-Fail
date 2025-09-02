@@ -1,35 +1,21 @@
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-
-# Sample dataset (Hours, Attendance, Anxiety, Pass/Fail)
-# Pass = 1, Fail = 0
 data = {
     "Hours": [2, 4, 6, 8, 10, 1, 3, 5, 7, 9],
     "Attendance": [60, 70, 80, 85, 90, 50, 65, 75, 82, 88],
     "Anxiety": [1, 1, 0, 0, 0, 1, 1, 0, 0, 0],  # 1 = High anxiety, 0 = Low
     "Pass": [0, 0, 1, 1, 1, 0, 0, 1, 1, 1]
 }
-
-# Convert to DataFrame
 df = pd.DataFrame(data)
-
-# Features and Target
 X = df[["Hours", "Attendance", "Anxiety"]]
 y = df["Pass"]
-
-# Train logistic regression model
 model = LogisticRegression()
 model.fit(X, y)
-
-# ===== USER INPUT =====
 hours = float(input("Enter study hours: "))
 attendance = float(input("Enter attendance percentage: "))
 anxiety = int(input("Enter anxiety level (1 = High, 0 = Low): "))
-
-# Prediction
 prob = model.predict_proba([[hours, attendance, anxiety]])[0][1]
 prediction = model.predict([[hours, attendance, anxiety]])[0]
-
 print(f"\nProbability of Passing: {prob:.4f}")
 print("Prediction:", "Pass ✅" if prediction == 1 else "Fail ❌")
